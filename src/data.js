@@ -11,8 +11,8 @@ let users = [
   },
   {
     id: 3,
-    name: "Gabriel Romero",
-    email: "gromero@mail.com",
+    name: "Brenda Belen",
+    email: "bbelen@mail.com",
   },
 ];
 
@@ -22,6 +22,18 @@ let posts = [
     title: "Clase de Express",
     contents: "Un contenido de la clase",
     userId: 2,
+  },
+  {
+    id: 2,
+    title: "Clase de Express",
+    contents: "Un contenido de la clase",
+    userId: 1,
+  },
+  {
+    id: 3,
+    title: "Clase de Express",
+    contents: "Un contenido de la clase",
+    userId: 3,
   },
 ];
 

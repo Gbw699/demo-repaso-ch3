@@ -9,6 +9,8 @@ function* idGenerator() {
 }
 let newId = idGenerator();
 
+
+
 const getUsers = () => {
   return users;
 };
