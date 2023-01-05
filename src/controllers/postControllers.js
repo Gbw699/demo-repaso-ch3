@@ -41,9 +41,16 @@ const changePost = (id, title, contents) => {
   post.contents = contents;
 };
 
+const deletePost = (id) => {
+  const post = posts.find((post) => post.id == id);
+  if (!post) throw Error(`El post con el id: ${id} no existe`);
+  posts = posts.filter((post) => post.id != id);
+};
+
 module.exports = {
   getPosts,
   getPostById,
   addPost,
   changePost,
+  deletePost,
 };

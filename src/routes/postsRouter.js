@@ -4,6 +4,7 @@ const {
   getPostById,
   addPost,
   changePost,
+  deletePost,
 } = require("../controllers/postControllers");
 
 const postsRouter = Router();
@@ -54,7 +55,13 @@ postsRouter.put("/", (req, res) => {
 
 postsRouter.delete("/:id/delete", (req, res) => {
   // elimina el post de id indicado
-  res.status(200).json({ success: "ok" });
+  const { id } = req.params;
+  try {
+    deletePost(id);
+    res.status(200).json({ success: "El post se borró correctamente" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 // {
