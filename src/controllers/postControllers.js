@@ -28,13 +28,22 @@ const addPost = (title, contents, userId) => {
     id: newId.next().value,
     title,
     contents,
-    userId
+    userId,
   };
   posts.push(newPost);
+};
+
+const changePost = (id, title, contents) => {
+  const post = posts.find((post) => post.id == id);
+  if (!id || !title || !contents) throw Error("Faltan parámetros");
+  if (!post) throw Error(`El post con el id: ${id} no existe`);
+  post.title = title;
+  post.contents = contents;
 };
 
 module.exports = {
   getPosts,
   getPostById,
   addPost,
+  changePost,
 };

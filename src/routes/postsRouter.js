@@ -1,5 +1,10 @@
 const { Router } = require("express");
-const { getPosts, getPostById, addPost } = require("../controllers/postControllers");
+const {
+  getPosts,
+  getPostById,
+  addPost,
+  changePost,
+} = require("../controllers/postControllers");
 
 const postsRouter = Router();
 
@@ -29,7 +34,7 @@ postsRouter.post("/", (req, res) => {
   // si el usuario de id userId no existe... Error("user does not exist")
   const { title, contents, userId } = req.body;
   try {
-    addPost(title, contents, userId)
+    addPost(title, contents, userId);
     res.status(200).json({ success: "El post se agregó correctamente" });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -38,7 +43,13 @@ postsRouter.post("/", (req, res) => {
 
 postsRouter.put("/", (req, res) => {
   // recibe por body id, title, contents
-  res.status(200).json({ success: "ok" });
+  const { id, title, contents } = req.body;
+  try {
+    changePost(id, title, contents);
+    res.status(200).json({ success: "post modificado correctamente" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 postsRouter.delete("/:id/delete", (req, res) => {
